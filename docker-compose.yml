@@ -7,7 +7,7 @@ services:
     device_cgroup_rules:
       - "c 189:* rwm"
     ports:
-      - 8080:80  # Web interface
+      - 8077:80  # Web interface
     environment:
       # General parameters
       - LOGLEVEL=error
@@ -48,8 +48,8 @@ services:
       - URL_AIRSPY=${URL_AIRSPY}
       
     volumes:
-      - /opt/adsb/ultrafeeder/globe_history:/var/globe_history
-      - /opt/adsb/ultrafeeder/graphs1090:/var/lib/collectd
+      - globe_history:/var/globe_history
+      - graphs1090:/var/lib/collectd
       - /proc/diskstats:/proc/diskstats:ro
       - /dev/bus/usb:/dev/bus/usb
     tmpfs:
@@ -67,11 +67,16 @@ services:
     environment:
       - WINGBITS_DEVICE_ID=${WINGBITS_DEVICE_ID}
       - ULTRAFEEDER_HOST=ultrafeeder
+      - WINGBITS_SERIAL_DEVICE=${WINGBITS_SERIAL_DEVICE}
     devices:
-      - "/dev/ttyACM0:/dev/ttyACM0"
+      - "${WINGBITS_SERIAL_DEVICE}:${WINGBITS_SERIAL_DEVICE}"
     privileged: true
     networks:
       - wingbits
+
+volumes:
+  globe_history:
+  graphs1090:
 
 networks:
   wingbits:

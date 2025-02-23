@@ -7,7 +7,7 @@ services:
     device_cgroup_rules:
       - "c 189:* rwm"
     ports:
-      - 8080:80  # Web interface
+      - 8077:80  # Web interface
     environment:
       # General parameters
       - LOGLEVEL=error

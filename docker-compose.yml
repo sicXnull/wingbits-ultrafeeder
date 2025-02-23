@@ -7,7 +7,7 @@ services:
     device_cgroup_rules:
       - "c 189:* rwm"
     ports:
-      - 8077:80  # Web interface
+      - 8080:80  # Web interface
     environment:
       # General parameters
       - LOGLEVEL=error
@@ -67,7 +67,6 @@ services:
     environment:
       - WINGBITS_DEVICE_ID=${WINGBITS_DEVICE_ID}
       - ULTRAFEEDER_HOST=ultrafeeder
-      - WINGBITS_SERIAL_DEVICE=${WINGBITS_SERIAL_DEVICE}
     devices:
       - "${WINGBITS_SERIAL_DEVICE}:${WINGBITS_SERIAL_DEVICE}"
     privileged: true

@@ -68,7 +68,7 @@ services:
       - WINGBITS_DEVICE_ID=${WINGBITS_DEVICE_ID}
       - ULTRAFEEDER_HOST=ultrafeeder
     devices:
-      - "${WINGBITS_SERIAL_DEVICE}:${WINGBITS_SERIAL_DEVICE}"
+      - "${SERIAL_DEVICE}:${SERIAL_DEVICE}"
     privileged: true
     networks:
       - wingbits
